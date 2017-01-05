@@ -19,3 +19,19 @@ dependencies {
 }
 
 apply plugin: 'org.danilopianini.javadoc.io-linker'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            pom.project {
+                developers {
+                    developer {
+                        name 'Danilo Pianini'
+                        email 'danilo.pianini@gmail.com'
+                        url 'http://www.danilopianini.org'
+                    }
+                }
+            }
+        }
+    }
+}
