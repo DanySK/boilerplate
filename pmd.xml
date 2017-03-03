@@ -40,7 +40,6 @@
 	<rule ref="rulesets/java/basic.xml/AvoidUsingHardCodedIP" />
 	<rule ref="rulesets/java/controversial.xml/AvoidUsingNativeCode" />
 	<rule ref="rulesets/java/basic.xml/AvoidUsingOctalValues" />
-	<rule ref="rulesets/java/controversial.xml/AvoidUsingShortType" />
 	<rule ref="rulesets/java/design.xml/BadComparison" />
 	<rule ref="rulesets/java/basic.xml/BigIntegerInstantiation" />
 	<rule ref="rulesets/java/naming.xml/BooleanGetMethodName" />
@@ -90,7 +89,6 @@
 	<rule ref="rulesets/java/empty.xml/EmptyWhileStmt" />
 	<rule ref="rulesets/java/design.xml/EqualsNull" />
 	<rule ref="rulesets/java/strictexception.xml/ExceptionAsFlowControl" />
-	<rule ref="rulesets/java/codesize.xml/ExcessivePublicCount" />
 	<rule ref="rulesets/vm/basic.xml/ExcessiveTemplateLength" />
 	<rule ref="rulesets/plsql/codesize.xml/ExcessiveTypeLength" />
 	<rule ref="rulesets/java/basic.xml/ExtendsObject" />
