@@ -1,6 +1,6 @@
-# Stream Goodies
+# Boilerplate
 
-Collection of tools that enrich `java.lang.stream`
+Collection of boilerplate code that should ease writing Java 8+ code
 
 ## Status
 
@@ -39,7 +39,7 @@ I warmly suggest to use Gradle, Maven or a similar system to deal with dependenc
 ```xml
 <dependency>
     <groupId>org.danilopianini</groupId>
-    <artifactId>stream-goodies</artifactId>
+    <artifactId>boilerplate</artifactId>
     <version>VERSION_YOU_WANT_TO_USE</version>
 </dependency>
 ```
