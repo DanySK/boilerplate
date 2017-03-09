@@ -74,7 +74,7 @@ public class SmallestN<T> implements Collector<T, MinMaxPriorityQueue<T>, MinMax
     }
 
     @Override
-    public Set<java.util.stream.Collector.Characteristics> characteristics() {
+    public Set<Characteristics> characteristics() {
         return CHARACT;
     }
 
