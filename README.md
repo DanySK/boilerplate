@@ -14,6 +14,15 @@ Collection of boilerplate code that should ease writing Java 8+ code
 
 ## Usage
 
+### `FastReadWriteLock`
+
+Implements a multiple-reader / single-writer lock relying on a single semaphore. Writers lock with `write()`, readers lock with `read()`. Both release the lock with `release()`. The lock must be used correctly by the programmer (releases made randomly are unchecked, and will break the locking system). Non-reentrant (calling `write()` twice produces a deadlock).
+
+
+### `PrimitiveArrays`
+
+A set of utility methods for changing (through copy) the type of arrays. Allows for both widening and narrowing "casts" (with precision loss).
+
 ### `Streams.flatten`
 
 Flattens a recursive, hierarchical data structure to a `Stream`.
@@ -31,6 +40,7 @@ Would traverse the tree breadth-first.
 A collector that efficiently selects the desired number of smallest elements from the stream.
 Returns a Guava `MinMaxPriorityQueue`, that is used to efficiently store only the required elements.
 This collector has in general better performance than the equivalent `.sort().limit().collect()` chain.
+
 
 ## Import in your project
 
