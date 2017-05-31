@@ -6,18 +6,21 @@ Collection of boilerplate code that should ease writing Java 8+ code
 
 ### Stable branch
 
-[![Build Status](https://travis-ci.org/DanySK/stream-goodies.svg?branch=master)](https://travis-ci.org/DanySK/stream-goodies)
+[![Build Status](https://travis-ci.org/DanySK/boilerplate.svg?branch=master)](https://travis-ci.org/DanySK/boilerplate)
 
 ### Development branch
 
-[![Build Status](https://travis-ci.org/DanySK/stream-goodies.svg?branch=develop)](https://travis-ci.org/DanySK/stream-goodies)
+[![Build Status](https://travis-ci.org/DanySK/boilerplate.svg?branch=develop)](https://travis-ci.org/DanySK/boilerplate)
 
 ## Usage
+
+### `Hashes`
+
+Murmur3-based hashing for arbitrary objects.
 
 ### `FastReadWriteLock`
 
 Implements a multiple-reader / single-writer lock relying on a single semaphore. Writers lock with `write()`, readers lock with `read()`. Both release the lock with `release()`. The lock must be used correctly by the programmer (releases made randomly are unchecked, and will break the locking system). Non-reentrant (calling `write()` twice produces a deadlock).
-
 
 ### `PrimitiveArrays`
 
@@ -40,7 +43,6 @@ Would traverse the tree breadth-first.
 A collector that efficiently selects the desired number of smallest elements from the stream.
 Returns a Guava `MinMaxPriorityQueue`, that is used to efficiently store only the required elements.
 This collector has in general better performance than the equivalent `.sort().limit().collect()` chain.
-
 
 ## Import in your project
 
