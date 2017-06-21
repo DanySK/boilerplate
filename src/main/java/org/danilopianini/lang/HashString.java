@@ -12,8 +12,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Objects;
 
-import com.github.benmanes.caffeine.cache.Caffeine;
-import com.github.benmanes.caffeine.cache.LoadingCache;
 import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
 import com.google.common.hash.Hashing;
@@ -33,12 +31,6 @@ public class HashString implements Cloneable, Serializable, Comparable<CharSeque
     private static final byte ENCODING_BASE = 36;
     private static final HashFunction HASHF = Hashing.murmur3_128();
     private static final long serialVersionUID = 1L;
-    private static final int CACHE_SIZE = 2003;
-    private static final LoadingCache<String, HashString> FLYWEIGHT = Caffeine.newBuilder()
-            .weakKeys()
-            .maximumSize(CACHE_SIZE)
-            .build(s -> new HashString(s, true));
-
     private String base;
     private byte[] hash;
     private int hash32;
@@ -56,21 +48,13 @@ public class HashString implements Cloneable, Serializable, Comparable<CharSeque
         hash32 = string.hash32;
     }
 
-    private HashString(final String string, final boolean preHash) {
-        Objects.requireNonNull(string);
-        s = string;
-        if (preHash) {
-            computeHashes();
-        }
-    }
-
     /**
      * @param string
      *            the String to wrap
      */
     @SuppressFBWarnings("NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE")
     public HashString(final String string) {
-        this(FLYWEIGHT.get(Objects.requireNonNull(string).intern()));
+        s = Objects.requireNonNull(string);
     }
 
     @Override
