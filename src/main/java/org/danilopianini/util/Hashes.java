@@ -6,9 +6,14 @@
  *******************************************************************************/
 package org.danilopianini.util;
 
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
+import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
+import java.util.function.Consumer;
 
 import com.google.common.hash.HashCode;
 import com.google.common.hash.HashFunction;
@@ -27,6 +32,17 @@ public final class Hashes {
      * 
      */
     private Hashes() {
+    }
+
+    /**
+     * Computes a 64bit hash.
+     * 
+     * @param data
+     *            the data to hash
+     * @return a 64bit hash
+     */
+    public static byte[] hash128(final Object... data) {
+        return hashcode(data).asBytes();
     }
 
     /**
@@ -233,17 +249,6 @@ public final class Hashes {
         return hashcode(data).asLong();
     }
 
-    /**
-     * Computes a 64bit hash.
-     * 
-     * @param data
-     *            the data to hash
-     * @return a 64bit hash
-     */
-    public static byte[] hash128(final Object... data) {
-        return hashcode(data).asBytes();
-    }
-
     private static HashCode hashcode(final Object... data) {
         final Hasher h = MURMUR128.newHasher();
         if (data.length == 1) {
@@ -252,6 +257,42 @@ public final class Hashes {
             populateHasher(data, h);
         }
         return h.hash();
+    }
+
+    /**
+     * @param in
+     *            input resource
+     * @param onFailure
+     *            {@link IOException} handler
+     * @return an {@link HashCode} representation of the file (non
+     *         cryptographic)
+     */
+    public static HashCode hashResource(final File in, final Consumer<IOException> onFailure) {
+        return hashResource(in.toPath(), onFailure);
+    }
+
+    /**
+     * @param in
+     *            input resource
+     * @param onFailure
+     *            {@link IOException} handler
+     * @return an {@link HashCode} representation of the file (non
+     *         cryptographic)
+     */
+    public static HashCode hashResource(final Path in, final Consumer<IOException> onFailure) {
+        return hashcode(new InputStreamIterator(in, onFailure));
+    }
+
+    /**
+     * @param in
+     *            input resource
+     * @param onFailure
+     *            {@link IOException} handler
+     * @return an {@link HashCode} representation of the file (non
+     *         cryptographic)
+     */
+    public static HashCode hashResource(final URL in, final Consumer<IOException> onFailure) {
+        return hashcode(new InputStreamIterator(in, onFailure));
     }
 
     private static void populateHasher(final Object data, final Hasher h) {
