@@ -280,7 +280,7 @@ public final class Hashes {
      *         cryptographic)
      */
     public static HashCode hashResource(final Path in, final Consumer<IOException> onFailure) {
-        return hashcode(new InputStreamIterator(in, onFailure));
+        return hashResource(new InputStreamIterator(in, onFailure));
     }
 
     /**
@@ -292,7 +292,23 @@ public final class Hashes {
      *         cryptographic)
      */
     public static HashCode hashResource(final URL in, final Consumer<IOException> onFailure) {
-        return hashcode(new InputStreamIterator(in, onFailure));
+        return hashResource(new InputStreamIterator(in, onFailure));
+    }
+
+    /**
+     * @param in
+     *            input resource
+     * @param onFailure
+     *            {@link IOException} handler
+     * @return an {@link HashCode} representation of the file (non
+     *         cryptographic)
+     */
+    private static HashCode hashResource(final InputStreamIterator it) {
+        final Hasher hasher = MURMUR128.newHasher();
+        while (it.hasNext()) {
+            hasher.putByte(it.next());
+        }
+        return hasher.hash();
     }
 
     private static void populateHasher(final Object data, final Hasher h) {
