@@ -8,6 +8,10 @@ plugins {
 	id("org.danilopianini.publish-on-central") version "0.1.1"
 }
 
+gitSemVer {
+    version = computeGitSemVer()
+}
+
 repositories {
     mavenCentral()
 }
@@ -18,13 +22,14 @@ dependencies {
     testImplementation("junit:junit:${extra["junitVersion"]}")
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
 publishOnCentral {
     projectDescription.set(extra["projectDescription"].toString())
     projectLongName.set("Java boilerplate code")
-}
-
-gitSemVer {
-    version = computeGitSemVer()
 }
 
 publishing {
