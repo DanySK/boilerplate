@@ -12,6 +12,14 @@ matrix:
   include:
     - jdk: openjdk8
       env: PUBLISH="true"
+    - jdk: openjdk9
+      env: PUBLISH="false"
+    - jdk: openjdk10
+      env: PUBLISH="false"
+    - jdk: openjdk11
+      env: PUBLISH="false"
+    - jdk: openjdk12
+      env: PUBLISH="false"
 
 before_install:
   - sudo apt-get -qq update
