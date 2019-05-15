@@ -33,7 +33,7 @@ java {
 
 pmd {
     ruleSets = listOf()
-    ruleSetConfig = resources.text.fromFile("pmd.xml")
+    ruleSetConfig = resources.text.fromFile("config/pmd/pmd.xml")
 }
 
 publishOnCentral {
