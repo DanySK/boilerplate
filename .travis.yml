@@ -25,6 +25,7 @@ matrix:
   exclude:
     - jdk: openjdk8
       env: PUBLISH="false"
+      os: linux
 
 before_install:
   - sudo apt-get -qq update
