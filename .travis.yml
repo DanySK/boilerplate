@@ -21,10 +21,10 @@ env:
 matrix:
   include:
     - jdk: openjdk8
-    - env: PUBLISH="true"
+      env: PUBLISH="true"
   exclude:
     - jdk: openjdk8
-    - env: PUBLISH="false"
+      env: PUBLISH="false"
 
 before_install:
   - sudo apt-get -qq update
