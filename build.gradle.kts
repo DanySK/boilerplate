@@ -7,10 +7,10 @@ plugins {
 	pmd
 	checkstyle
 	jacoco
-	id("de.fayard.buildSrcVersions") version "0.3.2"
-	id("org.danilopianini.git-sensitive-semantic-versioning") version "0.1.0"
-	id("org.danilopianini.javadoc.io-linker") version "0.1.4"
-	id("org.danilopianini.publish-on-central") version "0.1.1"
+	id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
+	id("org.danilopianini.git-sensitive-semantic-versioning") version Versions.org_danilopianini_git_sensitive_semantic_versioning_gradle_plugin
+	id("org.danilopianini.javadoc.io-linker") version Versions.org_danilopianini_javadoc_io_linker_gradle_plugin
+	id("org.danilopianini.publish-on-central") version Versions.org_danilopianini_publish_on_central_gradle_plugin
 }
 
 gitSemVer {
