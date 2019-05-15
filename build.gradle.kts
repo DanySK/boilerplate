@@ -5,6 +5,7 @@ plugins {
 	`project-report`
 	`build-dashboard`
 	pmd
+	checkstyle
 	jacoco
 	id("org.danilopianini.git-sensitive-semantic-versioning") version "0.1.0"
 	id("org.danilopianini.javadoc.io-linker") version "0.1.4"
