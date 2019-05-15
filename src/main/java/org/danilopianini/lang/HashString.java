@@ -91,8 +91,8 @@ public class HashString implements Cloneable, Serializable, Comparable<CharSeque
      */
     public boolean equalTo(final HashString fs) {
         return hashCode() == fs.hashCode()
-                && s.length() == fs.s.length()
-                && Arrays.equals(hash, fs.hash);
+            && s.length() == fs.s.length()
+            && Arrays.equals(hash, fs.hash);
     }
 
     @Override
