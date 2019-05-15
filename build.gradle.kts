@@ -22,7 +22,7 @@ repositories {
 
 dependencies {
     api("com.google.guava:guava:${extra["guavaVersion"]}")
-    implementation("com.github.spotbugs:spotbugs-annotations:${extra["spotbugsVersion"]}")
+    compileOnly("com.github.spotbugs:spotbugs-annotations:${extra["spotbugsVersion"]}")
     testImplementation("junit:junit:${extra["junitVersion"]}")
 }
 
