@@ -3,7 +3,8 @@ plugins {
 	signing
 	`maven-publish`
 	`project-report`
-	`builod-dashboard`
+	`build-dashboard`
+	pmd
 	jacoco
 	id("org.danilopianini.git-sensitive-semantic-versioning") version "0.1.0"
 	id("org.danilopianini.javadoc.io-linker") version "0.1.4"
@@ -27,6 +28,11 @@ dependencies {
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+pmd {
+    ruleSets = listOf()
+    ruleSetConfig = resources.text.fromFile("pmd.xml")
 }
 
 publishOnCentral {
