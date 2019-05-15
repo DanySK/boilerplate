@@ -89,7 +89,7 @@ public class HashString implements Cloneable, Serializable, Comparable<CharSeque
      *            the FasterString to compare to
      * @return true if equals
      */
-    public boolean equals(final HashString fs) {
+    public boolean equalTo(final HashString fs) {
         return hashCode() == fs.hashCode()
                 && s.length() == fs.s.length()
                 && Arrays.equals(hash, fs.hash);
@@ -97,7 +97,7 @@ public class HashString implements Cloneable, Serializable, Comparable<CharSeque
 
     @Override
     public boolean equals(final Object o) {
-        return o instanceof HashString && equals((HashString) o);
+        return this == o || o instanceof HashString && equalTo((HashString) o);
     }
 
     @Override
