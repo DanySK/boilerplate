@@ -42,5 +42,6 @@ script: >-
         gradlew.bat clean check sourcesJar javadocJar
     else
         ./gradlew clean check sourcesJar javadocJar
+    fi
 
 after_success: if $SHOULD_CONFIGURE && $PUBLISH; then ./gradlew publish publish; fi
