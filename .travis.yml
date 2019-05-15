@@ -1,6 +1,7 @@
 os:
    - linux
    - osx
+   - windows
 dist: xenial
 jdk:
    - openjdk8
@@ -38,6 +39,10 @@ install: >-
         bash prepare_environment.sh
     fi
 
-script: ./gradlew clean check sourcesJar javadocJar
+script: >-
+    if [ $TRAVIS_OS_NAME = "windows" ]; then
+        gradlew.bat clean check sourcesJar javadocJar
+    else
+        ./gradlew clean check sourcesJar javadocJar
 
 after_success: if $SHOULD_CONFIGURE && $PUBLISH; then ./gradlew publish publish; fi
