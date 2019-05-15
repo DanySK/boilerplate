@@ -26,6 +26,8 @@ matrix:
     - jdk: openjdk8
       env: PUBLISH="false"
       os: linux
+    - jdk: openjdk8
+      os: osx
 
 before_install:
   - export SHOULD_CONFIGURE="$(if ! $TRAVIS_PULL_REQUEST && [ $TRAVIS_REPO_SLUG = 'DanySK/boilerplate' ]; then echo 'true'; else echo 'false'; fi)"
