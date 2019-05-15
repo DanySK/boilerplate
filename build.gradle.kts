@@ -7,6 +7,7 @@ plugins {
 	pmd
 	checkstyle
 	jacoco
+	id("de.fayard.buildSrcVersions") version "0.3.2"
 	id("org.danilopianini.git-sensitive-semantic-versioning") version "0.1.0"
 	id("org.danilopianini.javadoc.io-linker") version "0.1.4"
 	id("org.danilopianini.publish-on-central") version "0.1.1"
@@ -21,9 +22,9 @@ repositories {
 }
 
 dependencies {
-    api("com.google.guava:guava:${extra["guavaVersion"]}")
-    compileOnly("com.github.spotbugs:spotbugs-annotations:${extra["spotbugsVersion"]}")
-    testImplementation("junit:junit:${extra["junitVersion"]}")
+    api(Libs.guava)
+    compileOnly(Libs.spotbugs_annotations)
+    testImplementation(Libs.junit)
 }
 
 java {
