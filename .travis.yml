@@ -29,8 +29,6 @@ matrix:
       os: linux
 
 before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install -y graphviz
   - export SHOULD_CONFIGURE="$(if ! $TRAVIS_PULL_REQUEST && [ $TRAVIS_REPO_SLUG = "DanySK/boilerplate" ]; then echo "true"; else echo "false"; fi)"
 
 install: >-
