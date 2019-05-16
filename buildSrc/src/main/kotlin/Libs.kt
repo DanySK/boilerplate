@@ -6,6 +6,10 @@ import kotlin.String
  * Update this file with
  *   `$ ./gradlew buildSrcVersions` */
 object Libs {
+    const val com_github_spotbugs_gradle_plugin: String =
+            "com.github.spotbugs:com.github.spotbugs.gradle.plugin:" +
+            Versions.com_github_spotbugs_gradle_plugin
+
     /**
      * https://spotbugs.github.io/ */
     const val spotbugs_annotations: String = "com.github.spotbugs:spotbugs-annotations:" +
