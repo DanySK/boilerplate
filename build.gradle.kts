@@ -1,3 +1,5 @@
+import com.github.spotbugs.SpotBugsTask
+
 plugins {
 	`java-library`
 	signing
@@ -25,6 +27,7 @@ repositories {
 dependencies {
     api(Libs.guava)
     compileOnly(Libs.spotbugs_annotations)
+    testImplementation(Libs.spotbugs_annotations)
     testImplementation(Libs.junit)
 }
 
@@ -33,9 +36,22 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+tasks.withType<SpotBugsTask> {
+    reports {
+        xml.setEnabled(false)
+        html.setEnabled(true)
+    }
+    ignoreFailures = false
+    effort = "max"
+    reportLevel = "low"
+    File("${project.rootProject.projectDir}/findbugsExcludes.xml")
+	.takeIf { it.exists() }
+	?.also { excludeFilterConfig = project.resources.text.fromFile(it) }
+}
+
 pmd {
     ruleSets = listOf()
-    ruleSetConfig = resources.text.fromFile("config/pmd/pmd.xml")
+    ruleSetConfig = resources.text.fromFile("${project.rootProject.projectDir}/config/pmd/pmd.xml")
 }
 
 publishOnCentral {
