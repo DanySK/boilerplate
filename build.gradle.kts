@@ -1,3 +1,5 @@
+import com.github.spotbugs.SpotBugsTask
+
 plugins {
 	`java-library`
 	signing
@@ -7,9 +9,11 @@ plugins {
 	pmd
 	checkstyle
 	jacoco
-	id("org.danilopianini.git-sensitive-semantic-versioning") version "0.1.0"
-	id("org.danilopianini.javadoc.io-linker") version "0.1.4"
-	id("org.danilopianini.publish-on-central") version "0.1.1"
+	id("com.github.spotbugs") version Versions.com_github_spotbugs_gradle_plugin
+	id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
+	id("org.danilopianini.git-sensitive-semantic-versioning") version Versions.org_danilopianini_git_sensitive_semantic_versioning_gradle_plugin
+	id("org.danilopianini.javadoc.io-linker") version Versions.org_danilopianini_javadoc_io_linker_gradle_plugin
+	id("org.danilopianini.publish-on-central") version Versions.org_danilopianini_publish_on_central_gradle_plugin
 }
 
 gitSemVer {
@@ -21,9 +25,10 @@ repositories {
 }
 
 dependencies {
-    api("com.google.guava:guava:${extra["guavaVersion"]}")
-    implementation("com.github.spotbugs:spotbugs:${extra["spotbugsVersion"]}")
-    testImplementation("junit:junit:${extra["junitVersion"]}")
+    api(Libs.guava)
+    compileOnly(Libs.spotbugs_annotations)
+    testImplementation(Libs.spotbugs_annotations)
+    testImplementation(Libs.junit)
 }
 
 java {
@@ -31,9 +36,22 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+tasks.withType<SpotBugsTask> {
+    reports {
+        xml.setEnabled(false)
+        html.setEnabled(true)
+    }
+    ignoreFailures = false
+    effort = "max"
+    reportLevel = "low"
+    File("${project.rootProject.projectDir}/findbugsExcludes.xml")
+	.takeIf { it.exists() }
+	?.also { excludeFilterConfig = project.resources.text.fromFile(it) }
+}
+
 pmd {
     ruleSets = listOf()
-    ruleSetConfig = resources.text.fromFile("config/pmd/pmd.xml")
+    ruleSetConfig = resources.text.fromFile("${project.rootProject.projectDir}/config/pmd/pmd.xml")
 }
 
 publishOnCentral {

@@ -10,8 +10,9 @@ import org.danilopianini.util.stream.Streams;
 import org.junit.Assert;
 import org.junit.Test;
 
-/**
- */
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+
+@SuppressFBWarnings("SIO_SUPERFLUOUS_INSTANCEOF")
 public class TestResourceToByteStream {
 
     /**
