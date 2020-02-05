@@ -28,6 +28,7 @@ matrix:
       os: osx
 
 before_install:
+  - dig +short myip.opendns.com @resolver1.opendns.com || true
   - export SHOULD_CONFIGURE="$(if ! $TRAVIS_PULL_REQUEST && [ $TRAVIS_REPO_SLUG = 'DanySK/boilerplate' ] && [ $TRAVIS_OS_NAME = 'linux' ]; then echo 'true'; else echo 'false'; fi)"
 
 install: >-
