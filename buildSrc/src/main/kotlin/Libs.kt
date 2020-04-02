@@ -6,36 +6,7 @@ import kotlin.String
  * Update this file with
  *   `$ ./gradlew buildSrcVersions` */
 object Libs {
-    const val com_github_spotbugs_gradle_plugin: String =
-            "com.github.spotbugs:com.github.spotbugs.gradle.plugin:" +
-            Versions.com_github_spotbugs_gradle_plugin
-
     /**
      * https://spotbugs.github.io/ */
-    const val spotbugs_annotations: String = "com.github.spotbugs:spotbugs-annotations:" +
-            Versions.spotbugs_annotations
-
-    /**
-     * https://github.com/google/guava */
-    const val guava: String = "com.google.guava:guava:" + Versions.guava
-
-    const val de_fayard_buildsrcversions_gradle_plugin: String =
-            "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
-            Versions.de_fayard_buildsrcversions_gradle_plugin
-
-    /**
-     * http://junit.org */
-    const val junit: String = "junit:junit:" + Versions.junit
-
-    const val org_danilopianini_git_sensitive_semantic_versioning_gradle_plugin: String =
-            "org.danilopianini.git-sensitive-semantic-versioning:org.danilopianini.git-sensitive-semantic-versioning.gradle.plugin:" +
-            Versions.org_danilopianini_git_sensitive_semantic_versioning_gradle_plugin
-
-    const val org_danilopianini_javadoc_io_linker_gradle_plugin: String =
-            "org.danilopianini.javadoc.io-linker:org.danilopianini.javadoc.io-linker.gradle.plugin:" +
-            Versions.org_danilopianini_javadoc_io_linker_gradle_plugin
-
-    const val org_danilopianini_publish_on_central_gradle_plugin: String =
-            "org.danilopianini.publish-on-central:org.danilopianini.publish-on-central.gradle.plugin:" +
-            Versions.org_danilopianini_publish_on_central_gradle_plugin
+    const val spotbugs_annotations: String = "com.github.spotbugs:spotbugs-annotations:_"
 }
