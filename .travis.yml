@@ -6,8 +6,9 @@ _reference_build: &reference_build
   env: *reference_jdk
 
 os:
-   - linux
-   - osx
+  - osx
+  - linux
+  - windows
 
 git:
   depth: false
